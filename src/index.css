@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+* { -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; }
+body { @apply bg-ink text-pale font-sans; overflow-x: hidden; }
+::selection { background: #10b981; color: #04140d; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #04140d; }
+::-webkit-scrollbar-thumb { background: #0a2a1c; border-radius: 4px; }
+
+@media (pointer: fine) {
+  .cursor-on * { cursor: none !important; }
+}
+.k-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+.l-input {
+  border-radius: 9999px;
+  border: 1px solid rgba(234,255,245,0.15);
+  background: rgba(10,42,28,0.4);
+  padding: 0.85rem 1.4rem;
+  color: #eafff5;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.l-input:focus { border-color: #10b981; }
+.l-input::placeholder { color: rgba(234,255,245,0.3); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .k-cursor { display: none; }
+}
